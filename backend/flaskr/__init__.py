@@ -67,8 +67,8 @@ def post_drink(jwt):
 
     if request_body is None:
         abort(422)
-    title = request_body.get("title")
-    recipe = request_body.get("recipe")
+    title = request_body.get("title", None)
+    recipe = request_body.get("recipe", None)
 
     try:
         new_drink = Drink(title=title, recipe=json.dumps(recipe))
