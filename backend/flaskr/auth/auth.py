@@ -54,15 +54,15 @@ def get_token_auth_header():
     token = parts[1]
     return token
 
+    
+
 
 def check_permissions(permission, payload):
     payload_permissions = payload.get("permissions", None)
-    print(payload_permissions)
 
     if payload_permissions is None:
         raise AuthError({"code": "no_permisssions",
                         "description": "No permissions found"}, 403)
-    print(permission in payload_permissions)
 
     if permission not in payload_permissions:
         raise AuthError({"code": "permission_not_found",
